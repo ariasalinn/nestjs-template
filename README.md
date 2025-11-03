@@ -136,3 +136,4 @@ The goal of this project is to provide a clean and up-to-date "starter pack" for
 ## 7. Contributing
 
 Feel free to suggest an improvement, report a bug, or ask something: [https://github.com/saluki/nestjs-template/issues](https://github.com/saluki/nestjs-template/issues)
+# CI/CD Test
