@@ -70,6 +70,10 @@ jobs:
             
             echo "🚀 Deploying Backend..."
             cd /srv/etsena
+
+            # Calculer le SHA court (7 premiers caractères)
+            FULL_SHA="${{ github.sha }}"
+            SHORT_SHA="${FULL_SHA:0:7}"
             
             # Définir le tag SHA
             export IMAGE_TAG="sha-${{ SHORT_SHA }}"
