@@ -76,7 +76,7 @@ jobs:
             SHORT_SHA="${FULL_SHA:0:7}"
             
             # Définir le tag SHA
-            export IMAGE_TAG="sha-${{ SHORT_SHA }}"
+            export IMAGE_TAG="sha-$SHORT_SHA"
             echo "IMAGE_TAG=${IMAGE_TAG}" > .env.deploy
             echo "📦 Backend version: ${IMAGE_TAG}"
             
@@ -91,10 +91,10 @@ jobs:
             
             # Pull image depuis GHCR
             echo "📥 Pulling image from GHCR..."
-            docker pull ghcr.io/${{ github.repository }}:sha-${{ SHORT_SHA }}
+            docker pull ghcr.io/${{ github.repository }}:sha-$SHORT_SHA
             
             # Tag local pour docker-compose
-            docker tag ghcr.io/${{ github.repository }}:sha-${{ SHORT_SHA }} etsena-backend:latest
+            docker tag ghcr.io/${{ github.repository }}:sha-$SHORT_SHA etsena-backend:latest
             
             # Déploiement zero-downtime
             echo "🔄 Deploying with zero-downtime..."
@@ -117,7 +117,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Deployment successful - sha-${{ SHORT_SHA }}"
+            echo "✅ Deployment successful - sha-$SHORT_SHA"
           else
             echo "❌ Deployment failed"
           fi
